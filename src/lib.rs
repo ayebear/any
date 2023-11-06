@@ -24,6 +24,9 @@ mod tests {
         assert_eq!(result, Any::from(0.2));
         let result = Any::from("abc") * Any::from(10);
         assert_eq!(result, Any::from("abcabcabcabcabcabcabcabcabcabc"));
+        let s: Any = "hello world!".into();
+        let n: Any = 2.into();
+        assert_eq!(s * n, Any::from("hello world!hello world!"));
     }
 
     #[test]
