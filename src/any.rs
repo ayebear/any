@@ -23,12 +23,20 @@ impl From<i64> for Any {
     }
 }
 
+impl From<&str> for Any {
+    fn from(s: &str) -> Self {
+        Any::String(s.into())
+    }
+}
+
 impl Add for Any {
     type Output = Self;
 
     fn add(self, other: Self) -> Self {
         match (self, other) {
             (Any::Number(a), Any::Number(b)) => Any::Number(a + b),
+            (Any::Number(a), Any::String(b)) => Any::String(format!("{a}{b}")),
+            (Any::String(a), Any::Number(b)) => Any::String(format!("{a}{b}")),
             _ => todo!("cannot add these types yet"),
         }
     }
