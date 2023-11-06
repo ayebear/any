@@ -116,28 +116,3 @@ impl Div for Any {
         }
     }
 }
-
-// pub enum Number {
-//     Float(f64),
-//     Integer(i64),
-//     Infinity,
-//     NegInfinity,
-// }
-
-impl Any {
-    // map: would map over value(s) and return the same type
-    // sorting a list would just mean converting to a set and back to a list
-    // Into/to_x() functions available between ALL types, upgrades and downgrades/lossless and lossy
-    // ALL operators overloaded, each would essentially be a bunch of matches on the enum variants
-    // many operators would cause automatic type upgrades to occur
-    // string / string == string.split(string)
-    // string * string == string.join(string)
-    // Integer(1) + Float(0.5) == Float(1.5)
-    // Float(0.5) + Float(0.5) == Integer(1)
-    // string + number, or string - number, would resize the string and fill in LLM-like predicted values deterministically
-    // number + string, might have to be the same operation. another alt would be to auto-convert the number to a string,
-    // but do so by converting it to its english name like three hundred and seventy four.
-    // string * number could repeat
-    // string / number could divide up a string into chunks
-    // string + string could have various behaviors if the strings parse out to values or something (really troll/cursed)
-}
