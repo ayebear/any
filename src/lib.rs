@@ -22,11 +22,20 @@ mod tests {
     fn mul() {
         let result = Any::from(0.1) * Any::from(2);
         assert_eq!(result, Any::from(0.2));
+        let result = Any::from("abc") * Any::from(10);
+        assert_eq!(result, Any::from("abcabcabcabcabcabcabcabcabcabc"));
     }
 
     #[test]
     fn div() {
         let result = Any::from(5) / Any::from(2);
         assert_eq!(result, Any::from(2.5));
+        let result = Any::from("hello there world!") / Any::from(" ");
+        assert_eq!(result, Any::from(["hello", "there", "world!"]));
+        let result = Any::from("hello there world!") / Any::from(3);
+        assert_eq!(
+            result,
+            Any::from(["hel", "lo ", "the", "re ", "wor", "ld!"])
+        );
     }
 }
