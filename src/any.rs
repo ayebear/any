@@ -1,6 +1,6 @@
 use std::collections::{BTreeMap, BTreeSet, VecDeque};
 use std::convert::From;
-use std::ops::{Add, Sub};
+use std::ops::{Add, Div, Mul, Sub};
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum Any {
@@ -49,6 +49,28 @@ impl Sub for Any {
         match (self, other) {
             (Any::Number(a), Any::Number(b)) => Any::Number(a - b),
             _ => todo!("cannot subtract these types yet"),
+        }
+    }
+}
+
+impl Mul for Any {
+    type Output = Self;
+
+    fn mul(self, other: Self) -> Self {
+        match (self, other) {
+            (Any::Number(a), Any::Number(b)) => Any::Number(a * b),
+            _ => todo!("cannot multiply these types yet"),
+        }
+    }
+}
+
+impl Div for Any {
+    type Output = Self;
+
+    fn div(self, other: Self) -> Self {
+        match (self, other) {
+            (Any::Number(a), Any::Number(b)) => Any::Number(a / b),
+            _ => todo!("cannot divide these types yet"),
         }
     }
 }
